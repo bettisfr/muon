@@ -4,7 +4,9 @@ A community port of the classic **Muon Package Manager** to **Qt6 and KDE
 Frameworks 6**, intended for use with Plasma 6 on APT based Linux distributions.
 This is an independent fork, not an official KDE release.
 
-<img src="src/icons/256-apps-muon.png" alt="Muon icon" width="96" height="96">
+<p align="center">
+  <img src="src/icons/256-apps-muon.png" alt="Muon icon" width="96" height="96">
+</p>
 
 Muon provides a detailed view of Debian packages, including dependencies,
 available versions, installed files, package history, and pending changes.
