@@ -42,10 +42,18 @@ void OriginFilter::populate()
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
     appendRow(defaultItem);
 
+    auto *localItem = new QStandardItem;
+    localItem->setEditable(false);
+    localItem->setText(i18nc("@item:inlistbox Installed version absent from repository indexes", "Local / no repository"));
+    localItem->setData(true, Qt::UserRole + 2);
+    localItem->setToolTip(i18nc("@info:tooltip", "Installed packages whose installed version is not available in any configured repository."));
+    appendRow(localItem);
+
     foreach(const QString &originLabel, originLabels) {
         QStandardItem *originItem = new QStandardItem;
         originItem->setEditable(false);
         originItem->setText(originLabel);
+        originItem->setData(m_backend->origin(originLabel), Qt::UserRole + 1);
         appendRow(originItem);
     }
 }

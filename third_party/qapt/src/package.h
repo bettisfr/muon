@@ -164,6 +164,9 @@ public:
     */
     QString installedVersion() const;
 
+    /** Returns true if the installed version is absent from repository indexes. */
+    bool isLocal() const;
+
    /**
     * Returns the newest available version of the package if it is not
     * installed.

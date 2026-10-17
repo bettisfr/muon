@@ -42,7 +42,7 @@ public Q_SLOTS:
     void reload();
     void filterByGroup(const QString &groupName);
     void filterByStatus(const QApt::Package::State state);
-    void filterByOrigin(const QString &originName);
+    void filterByOrigin(const QString &origin, bool localOnly);
     void filterByArchitecture(const QString &arch);
 };
 

@@ -146,8 +146,8 @@ void FilterWidget::statusActivated(const QModelIndex &index)
 
 void FilterWidget::originActivated(const QModelIndex &index)
 {
-    QString originName = index.data(Qt::DisplayRole).toString();
-    emit filterByOrigin(originName);
+    emit filterByOrigin(index.data(Qt::UserRole + 1).toString(),
+                        index.data(Qt::UserRole + 2).toBool());
 }
 
 void FilterWidget::architectureActivated(const QModelIndex &index)

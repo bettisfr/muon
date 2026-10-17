@@ -422,6 +422,20 @@ QString Package::installedVersion() const
     return QLatin1String(d->packageIter.CurrentVer().VerStr());
 }
 
+bool Package::isLocal() const
+{
+    const auto installed = d->packageIter.CurrentVer();
+    if (installed.end()) {
+        return false;
+    }
+    for (auto file = installed.FileList(); !file.end(); ++file) {
+        if (!(file.File()->Flags & pkgCache::Flag::NotSource)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 QString Package::availableVersion() const
 {
     pkgDepCache::StateCache &State = (*d->backend->cache()->depCache())[d->packageIter];

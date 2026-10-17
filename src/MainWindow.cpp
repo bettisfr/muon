@@ -109,8 +109,8 @@ void MainWindow::initGUI()
             m_managerWidget, SLOT(filterByGroup(QString)));
     connect(m_filterBox, SIGNAL(filterByStatus(QApt::Package::State)),
             m_managerWidget, SLOT(filterByStatus(QApt::Package::State)));
-    connect(m_filterBox, SIGNAL(filterByOrigin(QString)),
-            m_managerWidget, SLOT(filterByOrigin(QString)));
+    connect(m_filterBox, SIGNAL(filterByOrigin(QString,bool)),
+            m_managerWidget, SLOT(filterByOrigin(QString,bool)));
     connect(m_filterBox, SIGNAL(filterByArchitecture(QString)),
             m_managerWidget, SLOT(filterByArchitecture(QString)));
 

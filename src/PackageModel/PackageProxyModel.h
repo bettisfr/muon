@@ -42,7 +42,7 @@ public:
     bool isSortedByRelevancy() const;
     void setGroupFilter(const QString &filterText);
     void setStateFilter(QApt::Package::State state);
-    void setOriginFilter(const QString &origin);
+    void setOriginFilter(const QString &origin, bool localOnly);
     void setArchFilter(const QString &arch);
 
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
@@ -61,6 +61,7 @@ private:
     QString m_groupFilter;
     QApt::Package::State m_stateFilter;
     QString m_originFilter;
+    bool m_localOnly = false;
     QString m_archFilter;
 
     bool m_sortByRelevancy;

@@ -53,7 +53,7 @@ Install the build dependencies listed in [BUILDING.md](BUILDING.md), then run:
 
 ```sh
 ./scripts/build-deb.sh
-sudo apt install ./build-qt6/muon_5.8.0+qt6.1_amd64.deb
+sudo apt install ./build-qt6/muon_5.8.0+qt6.2_amd64.deb
 ```
 
 The filename above is for amd64; use the generated filename on other architectures.
@@ -84,8 +84,12 @@ the Qt6 port and testing of package transactions are welcome.
 
 ## Credits and license
 
+**Francesco Betti Sorbelli** — Qt6 / KDE Frameworks 6 port:
+[bettisfr on GitHub](https://github.com/bettisfr).
+
 This fork builds on the work of the original Muon and QApt authors and KDE
 contributors. Existing copyright and license notices are preserved in the
-sources; see [COPYING](COPYING) and [QApt's license](third_party/qapt/COPYING).
+sources; see [AUTHORS](AUTHORS), [COPYING](COPYING) and
+[QApt's license](third_party/qapt/COPYING).
 
 Moo.ogg was taken from wikipedia, and is licensed under the GFDL 1.2 license. It is copyright 2007 by Wikipedia user "Secretlondon" (Hint: it is part of an epic easter egg)

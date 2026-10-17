@@ -112,9 +112,10 @@ void PackageProxyModel::setStateFilter(QApt::Package::State state)
     invalidate();
 }
 
-void PackageProxyModel::setOriginFilter(const QString &origin)
+void PackageProxyModel::setOriginFilter(const QString &origin, bool localOnly)
 {
     m_originFilter = origin;
+    m_localOnly = localOnly;
     invalidate();
 }
 
@@ -143,6 +144,10 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
         if ((bool)(package->state() & m_stateFilter) == false) {
             return false;
         }
+    }
+
+    if (m_localOnly && !package->isLocal()) {
+        return false;
     }
 
     if (!m_originFilter.isEmpty()) {

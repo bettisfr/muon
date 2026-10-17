@@ -77,10 +77,9 @@ void ManagerWidget::filterByStatus(const QApt::Package::State state)
     m_proxyModel->setStateFilter(state);
 }
 
-void ManagerWidget::filterByOrigin(const QString &originName)
+void ManagerWidget::filterByOrigin(const QString &origin, bool localOnly)
 {
-    QString origin = m_backend->origin(originName);
-    m_proxyModel->setOriginFilter(origin);
+    m_proxyModel->setOriginFilter(origin, localOnly);
 }
 
 void ManagerWidget::filterByArchitecture(const QString &arch)
