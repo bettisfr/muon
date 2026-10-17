@@ -1,3 +1,4 @@
+#include <QLocale>
 /***************************************************************************
  *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
@@ -110,7 +111,7 @@ HistoryView::HistoryView(QWidget *parent)
         if (categoryHash.contains(date)) {
             category = categoryHash.value(date);
         } else {
-            category = startDateTime.date().toString(Qt::DefaultLocaleShortDate);
+            category = QLocale().toString(startDateTime.date(), QLocale::ShortFormat);
             categoryHash[date] = category;
         }
 

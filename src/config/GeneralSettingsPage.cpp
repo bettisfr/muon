@@ -45,7 +45,7 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
         , m_autoCleanSpinbox(new QSpinBox(this))
 {
     QFormLayout *layout = new QFormLayout(this);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     setLayout(layout);
 
     m_askChangesCheckBox->setText(i18n("Ask to confirm changes that affect other packages"));
@@ -60,7 +60,7 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
     QWidget *autoCleanWidget = new QWidget(this);
 
     QHBoxLayout *autoCleanLayout = new QHBoxLayout(autoCleanWidget);
-    autoCleanLayout->setMargin(0);
+    autoCleanLayout->setContentsMargins(0, 0, 0, 0);
     autoCleanWidget->setLayout(autoCleanLayout);
 
     m_autoCleanCheckBox->setText(i18n("Delete obsolete cached packages every:"));

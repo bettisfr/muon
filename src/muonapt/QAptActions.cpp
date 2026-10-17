@@ -33,7 +33,7 @@
 #include <QStandardPaths>
 #include <QDialogButtonBox>
 #include <QLayout>
-#include <QNetworkConfigurationManager>
+#include <QNetworkInformation>
 
 // KDE includes
 #include <KActionCollection>
@@ -58,9 +58,14 @@ QAptActions::QAptActions()
     , m_reloadWhenEditorFinished(false)
     , m_historyDialog(nullptr)
     , m_distUpgradeAvailable(false)
-    , m_config(new QNetworkConfigurationManager(this))
+    , m_config(nullptr)
 {
-    connect(m_config, &QNetworkConfigurationManager::onlineStateChanged, this, &QAptActions::shouldConnect);
+    QNetworkInformation::loadDefaultBackend();
+    m_config = QNetworkInformation::instance();
+    if (m_config) {
+        connect(m_config, &QNetworkInformation::reachabilityChanged, this,
+                [this] { Q_EMIT shouldConnect(isConnected()); });
+    }
 }
 
 QAptActions* QAptActions::self()
@@ -218,7 +223,7 @@ bool QAptActions::reloadWhenSourcesEditorFinished() const
 
 bool QAptActions::isConnected() const
 {
-    return m_config->isOnline();
+    return !m_config || m_config->reachability() != QNetworkInformation::Reachability::Disconnected;
 }
 
 bool QAptActions::saveSelections()
@@ -390,7 +395,7 @@ void QAptActions::runSourcesEditor()
     QStringList arguments;
     int winID = m_mainWindow->effectiveWinId();
 
-    const QString kdesu = QFile::decodeName(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/kdesu");
+    const QString kdesu = QFile::decodeName(KDE_INSTALL_FULL_LIBEXECDIR_KF "/kdesu");
     QString editor = QStandardPaths::findExecutable("software-properties-qt");
     if (editor.isEmpty()) {
         editor = QStandardPaths::findExecutable("software-properties-kde");
@@ -405,7 +410,7 @@ void QAptActions::runSourcesEditor()
                              "to configure software sources.</para>");
         QString title = xi18nc("@title:window",
                               "Cannot find <command>software-properties-qt</command>");
-        KMessageBox::sorry(m_mainWindow, text, title);
+        KMessageBox::error(m_mainWindow, text, title);
         return;
     }
 
@@ -522,7 +527,7 @@ void QAptActions::closeHistoryDialog()
 
 void QAptActions::launchDistUpgrade()
 {
-    const QString kdesu = QFile::decodeName(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/kdesu");
+    const QString kdesu = QFile::decodeName(KDE_INSTALL_FULL_LIBEXECDIR_KF "/kdesu");
     QProcess::startDetached(kdesu, {"--", "do-release-upgrade", "-m", "desktop", "-f", "DistUpgradeViewKDE"});
 }
 

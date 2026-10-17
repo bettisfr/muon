@@ -29,7 +29,7 @@
 class QTextBrowser;
 
 class KJob;
-class KPixmapSequenceOverlayPainter;
+class BusyOverlay;
 class KTemporaryFile;
 
 class ChangelogTab : public DetailsTab
@@ -40,7 +40,7 @@ public:
 
 private:
     QTextBrowser *m_changelogBrowser;
-    KPixmapSequenceOverlayPainter *m_busyWidget;
+    BusyOverlay *m_busyWidget;
     QHash<KJob *, QString> m_jobFilenames;
 
 public Q_SLOTS:

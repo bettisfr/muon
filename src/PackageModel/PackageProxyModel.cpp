@@ -178,9 +178,11 @@ QApt::Package *PackageProxyModel::packageAt(const QModelIndex &index) const
 
 void PackageProxyModel::reset()
 {
-    beginRemoveRows(QModelIndex(), 0, m_packages.size());
+    beginResetModel();
     m_packages =  static_cast<PackageModel *>(sourceModel())->packages();
-    endRemoveRows();
+    m_searchPackages.clear();
+    m_useSearchResults = false;
+    endResetModel();
     invalidate();
 }
 

@@ -1,0 +1,5 @@
+[D-BUS Service]
+Name=@QAPT_WORKER_RDN_VERSIONED@
+Exec=@KDE_INSTALL_FULL_LIBEXECDIR@/muon/qaptworker@QAPT_WORKER_VERSION@
+User=root
+

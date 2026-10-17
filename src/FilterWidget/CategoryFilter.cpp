@@ -1,3 +1,4 @@
+#include <algorithm>
 /***************************************************************************
  *   Copyright © 2010, 2011 Jonathan Thomas <echidnaman@kubuntu.org>       *
  *                                                                         *
@@ -57,8 +58,8 @@ void CategoryFilter::populate()
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
     appendRow(defaultItem);
 
-    QStringList groupList = groupSet.toList();
-    qSort(groupList);
+    QStringList groupList = groupSet.values();
+    std::sort(groupList.begin(), groupList.end());
 
     foreach(const QString &group, groupList) {
         QStandardItem *groupItem = new QStandardItem;

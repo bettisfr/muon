@@ -29,10 +29,10 @@
 
 // KDE includes
 #include <KIO/Job>
+#include <KIO/FileCopyJob>
 #include <KJob>
 #include <KLocalizedString>
-#include <KPixmapSequence>
-#include <KPixmapSequenceOverlayPainter>
+#include "../BusyOverlay.h"
 #include <KIconLoader>
 
 // QApt includes
@@ -46,10 +46,7 @@ ChangelogTab::ChangelogTab(QWidget *parent)
 
     m_changelogBrowser = new QTextBrowser(this);
 
-    m_busyWidget = new KPixmapSequenceOverlayPainter(this);
-    m_busyWidget->setSequence(KIconLoader::global()->loadPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
-    m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    m_busyWidget->setWidget(m_changelogBrowser->viewport());
+    m_busyWidget = new BusyOverlay(m_changelogBrowser->viewport());
 
     m_layout->addWidget(m_changelogBrowser);
 }

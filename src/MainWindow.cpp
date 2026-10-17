@@ -35,7 +35,8 @@
 #include <KActionCollection>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KProtocolManager>
+#include <KConfigGroup>
+#include <KSharedConfig>
 #include <KStandardAction>
 
 // QApt includes
@@ -76,7 +77,7 @@ void MainWindow::initGUI()
     QWidget *centralWidget = new QWidget(this);
     QVBoxLayout *centralLayout = new QVBoxLayout(centralWidget);
     centralLayout->setSpacing(0);
-    centralLayout->setMargin(0);
+    centralLayout->setContentsMargins(0, 0, 0, 0);
 
     m_stack = new QStackedWidget(centralWidget);
     m_stack->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -461,8 +462,9 @@ void MainWindow::revertChanges()
 void MainWindow::setupTransaction(QApt::Transaction *trans)
 {
     // Provide proxy/locale to the transaction
-    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
-        trans->setProxy(KProtocolManager::proxyFor("http"));
+    const KConfigGroup proxySettings(KSharedConfig::openConfig(QStringLiteral("kioslaverc")), QStringLiteral("Proxy Settings"));
+    if (proxySettings.readEntry("ProxyType", 0) == 1) {
+        trans->setProxy(proxySettings.readEntry("httpProxy", QString()));
     }
 
     trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));

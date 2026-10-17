@@ -1,3 +1,4 @@
+#include <algorithm>
 /***************************************************************************
  *   Copyright © 2010,2011 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *   Copyright © 2010 Guillaume Martres <smarter@ubuntu.com>               *
@@ -37,8 +38,7 @@
 #include <KComboBox>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KPixmapSequence>
-#include <KPixmapSequenceOverlayPainter>
+#include "../BusyOverlay.h"
 #include <KIconLoader>
 
 // QApt includes
@@ -62,7 +62,7 @@ bool packageNameLessThan(QApt::Package *p1, QApt::Package *p2)
 
 QApt::PackageList sortPackages(QApt::PackageList list)
 {
-    qSort(list.begin(), list.end(), packageNameLessThan);
+    std::sort(list.begin(), list.end(), packageNameLessThan);
     return list;
 }
 
@@ -129,10 +129,7 @@ PackageWidget::PackageWidget(QWidget *parent)
     connect(m_detailsWidget, SIGNAL(setPurge(QApt::Package*)),
             this, SLOT(setPurge(QApt::Package*)));
 
-    m_busyWidget = new KPixmapSequenceOverlayPainter(this);
-    m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
-    m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    m_busyWidget->setWidget(m_packageView->viewport());
+    m_busyWidget = new BusyOverlay(m_packageView->viewport());
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
 
@@ -274,7 +271,6 @@ void PackageWidget::cacheReloadStarted()
 {
     m_detailsWidget->clear();
     m_model->clear();
-    m_proxyModel->clear();
     m_proxyModel->reset();
     m_busyWidget->start();
 }
@@ -650,7 +646,7 @@ QApt::PackageList PackageWidget::selectedPackages()
         packages << m_proxyModel->packageAt(index);
     }
 
-    return packages.toList();
+    return packages.values();
 }
 
 void PackageWidget::showBrokenReason(QApt::Package *package)

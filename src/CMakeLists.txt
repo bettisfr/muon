@@ -44,26 +44,29 @@ set(muon_SRCS
 )
 
 kconfig_add_kcfg_files(muon_SRCS GENERATE_MOC config/MuonSettings.kcfgc)
-install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})
+install(FILES config/muon.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 
 add_executable(muon ${muon_SRCS})
 
-target_compile_definitions(muon PRIVATE -DCMAKE_INSTALL_FULL_LIBEXECDIR_KF5=\"${CMAKE_INSTALL_FULL_LIBEXECDIR_KF5}\")
+target_compile_definitions(muon PRIVATE -DKDE_INSTALL_FULL_LIBEXECDIR_KF=\"${KDE_INSTALL_FULL_LIBEXECDIR_KF}\")
 
 target_link_libraries(muon DebconfKDE::Main
-                           KF5::KIOWidgets
-                           KF5::DBusAddons
-                           KF5::I18n
-                           KF5::IconThemes
-                           KF5::XmlGui
-                           Qt5::Concurrent
+                           KF6::KIOWidgets
+                           KF6::DBusAddons
+                           KF6::I18n
+                           KF6::IconThemes
+                           KF6::ColorScheme
+                           KF6::WidgetsAddons
+                           KF6::XmlGui
+                           Qt6::Concurrent
+                           Qt6::Network
                            QApt::Main)
 
-install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(TARGETS muon ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
 
 ########### install files ###############
 
-install( PROGRAMS org.kde.muon.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
-install( FILES muonui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/muon )
+install( PROGRAMS org.kde.muon.desktop  DESTINATION ${KDE_INSTALL_APPDIR} )
+install( FILES muonui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUIDIR}/muon )
 install( FILES org.kde.muon.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )

@@ -272,22 +272,22 @@ QSize PackageDelegate::sizeHint(const QStyleOptionViewItem &option, const QModel
 
     switch (index.column()) {
     case 0:
-        size.setWidth(metric.width(index.data(PackageModel::DescriptionRole).toString()));
+        size.setWidth(metric.horizontalAdvance(index.data(PackageModel::DescriptionRole).toString()));
         break;
     case 1:
-        size.setWidth(metric.width(index.data(PackageModel::StatusRole).toString()));
+        size.setWidth(metric.horizontalAdvance(index.data(PackageModel::StatusRole).toString()));
         break;
     case 2:
-        size.setWidth(metric.width(index.data(PackageModel::ActionRole).toString()));
+        size.setWidth(metric.horizontalAdvance(index.data(PackageModel::ActionRole).toString()));
         break;
     case 3:
-        size.setWidth(metric.width(index.data(PackageModel::InstalledSizeDisplayRole).toString()));
+        size.setWidth(metric.horizontalAdvance(index.data(PackageModel::InstalledSizeDisplayRole).toString()));
         break;
     case 4:
-        size.setWidth(metric.width(index.data(PackageModel::InstalledVersionRole).toString()));
+        size.setWidth(metric.horizontalAdvance(index.data(PackageModel::InstalledVersionRole).toString()));
         break;
     case 5:
-        size.setWidth(metric.width(index.data(PackageModel::AvailableVersionRole).toString()));
+        size.setWidth(metric.horizontalAdvance(index.data(PackageModel::AvailableVersionRole).toString()));
         break;
     default:
         break;

@@ -51,7 +51,7 @@ MainTab::MainTab(QWidget *parent)
     QWidget *buttonBox = new QWidget;
 
     QHBoxLayout *buttonBoxLayout = new QHBoxLayout(buttonBox);
-    buttonBoxLayout->setMargin(0);
+    buttonBoxLayout->setContentsMargins(0, 0, 0, 0);
 
     m_buttonLabel = new QLabel(buttonBox);
     m_buttonLabel->setText(i18nc("@label", "Mark for:"));

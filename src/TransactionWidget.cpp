@@ -51,7 +51,7 @@ TransactionWidget::TransactionWidget(QWidget *parent)
     , m_lastRealProgress(0)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     setLayout(layout);
 
     m_headerLabel = new QLabel(this);
@@ -93,7 +93,7 @@ TransactionWidget::TransactionWidget(QWidget *parent)
 
     QWidget *hbox = new QWidget(this);
     QHBoxLayout *hboxLayout = new QHBoxLayout(hbox);
-    hboxLayout->setMargin(0);
+    hboxLayout->setContentsMargins(0, 0, 0, 0);
     hbox->setLayout(hboxLayout);
     layout->addWidget(hbox);
     m_totalProgress = new QProgressBar(hbox);
@@ -294,9 +294,9 @@ void TransactionWidget::configFileConflict(const QString &currentPath, const QSt
     // TODO: diff current and new paths
     Q_UNUSED(newPath)
 
-    int ret = KMessageBox::questionYesNo(this, text, title, useNew, useOld);
+    int ret = KMessageBox::questionTwoActions(this, text, title, useNew, useOld);
 
-    m_trans->resolveConfigFileConflict(currentPath, (ret == KMessageBox::Yes));
+    m_trans->resolveConfigFileConflict(currentPath, (ret == KMessageBox::PrimaryAction));
 }
 
 void TransactionWidget::updateProgress(int progress)

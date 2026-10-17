@@ -33,7 +33,7 @@ class QLineEdit;
 class QTimer;
 class QVBoxLayout;
 
-class KPixmapSequenceOverlayPainter;
+class BusyOverlay;
 
 class DetailsWidget;
 class PackageModel;
@@ -74,7 +74,7 @@ protected:
     DetailsWidget *m_detailsWidget;
     PackageModel *m_model;
     PackageProxyModel *m_proxyModel;
-    KPixmapSequenceOverlayPainter *m_busyWidget;
+    BusyOverlay *m_busyWidget;
 
 private:
     QApt::CacheState m_oldCacheState;

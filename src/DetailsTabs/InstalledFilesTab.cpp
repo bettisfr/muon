@@ -1,3 +1,4 @@
+#include <algorithm>
 /***************************************************************************
  *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
@@ -57,7 +58,7 @@ void InstalledFilesTab::populateFilesList()
 {
     m_filesBrowser->clear();
     QStringList filesList = m_package->installedFilesList();
-    qSort(filesList);
+    std::sort(filesList.begin(), filesList.end());
     QString filesString;
 
     foreach(const QString &file, filesList) {
