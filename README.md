@@ -19,10 +19,15 @@ separate D-Bus identity, allowing it to coexist with the distribution's Qt5 QApt
 
 ## Status and compatibility
 
-**Experimental, with initial compilation, startup, and installation checks on
-Ubuntu 26.04 amd64.** Initial user feedback confirms that the application runs.
-Package installation and removal, authentication, debconf prompts, and recovery
-from interrupted transactions still need broader integration testing.
+**Experimental, with initial checks on Ubuntu 26.04 amd64.** Compilation
+from a fresh clone (with the documented build dependencies installed), `.deb`
+generation, and application startup have been checked. Initial user testing
+also confirms installation of the Muon package, updates, and removal of two
+packages through Muon.
+
+Installing packages through Muon, debconf prompts, and recovery from interrupted
+transactions still need testing. Authentication and package operations need
+broader coverage across systems.
 
 The build requires Qt 6.4 or newer, KDE Frameworks 6.11 or newer, and DebconfKDE
 1.2 or newer built against Qt6. Other APT based distributions may work, but have

@@ -54,4 +54,11 @@ target_link_libraries(QApt
         Qt6::DBus
         ${XAPIAN_LIBRARIES})
 
-
+# Generate the public <QApt/...> headers from the bundled sources.
+include(ECMGenerateHeaders)
+ecm_generate_headers(qapt_FORWARDING_HEADERS
+    HEADER_NAMES
+        Backend Changelog Config DebFile DependencyInfo DownloadProgress
+        Globals History MarkingErrorInfo Package SourceEntry SourcesList Transaction
+    PREFIX QApt)
+target_include_directories(QApt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
