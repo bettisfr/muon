@@ -35,9 +35,9 @@ Remove with `sudo apt remove muon`.
 The Qt6 port is experimental. Building from a fresh clone with the documented
 dependencies, generating the `.deb`, and application startup have been checked
 on Ubuntu 26.04 amd64. Initial user testing also confirms installation of the
-Muon package, updates, and removal of two packages through Muon.
-Installing packages through Muon, debconf prompts, and recovery from interrupted
-transactions still need testing; authentication and package operations need
+Muon package and installation, updates, and removal of packages through Muon.
+Debconf prompts and recovery from interrupted transactions still need testing;
+authentication and package operations need
 broader coverage. No package transactions are run by the build script.
 The bundled QApt currently uses its English source strings.
 

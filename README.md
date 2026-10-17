@@ -22,11 +22,10 @@ separate D-Bus identity, allowing it to coexist with the distribution's Qt5 QApt
 **Experimental, with initial checks on Ubuntu 26.04 amd64.** Compilation
 from a fresh clone (with the documented build dependencies installed), `.deb`
 generation, and application startup have been checked. Initial user testing
-also confirms installation of the Muon package, updates, and removal of two
-packages through Muon.
+also confirms installation of the Muon package and installation, updates, and
+removal of packages through Muon.
 
-Installing packages through Muon, debconf prompts, and recovery from interrupted
-transactions still need testing. Authentication and package operations need
+Debconf prompts and recovery from interrupted transactions still need testing. Authentication and package operations need
 broader coverage across systems.
 
 The build requires Qt 6.4 or newer, KDE Frameworks 6.11 or newer, and DebconfKDE
