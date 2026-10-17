@@ -1,7 +1,7 @@
 # Runtime dependencies are derived by dpkg-shlibdeps on the build host.
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_NAME muon)
-set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}+qt6.2")
+set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}+qt6.1")
 set(CPACK_PACKAGE_CONTACT "Muon fork maintainers")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "APT package manager for KDE Plasma 6")
 set(CPACK_DEBIAN_PACKAGE_SECTION "kde")
