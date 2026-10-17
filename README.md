@@ -1,3 +1,5 @@
+<img src="src/icons/256-apps-muon.png" alt="Muon icon" width="96" height="96">
+
 # Muon — Qt6 / KDE Frameworks 6 port
 
 A community port of the classic **Muon Package Manager** to **Qt6 and KDE
