@@ -72,6 +72,7 @@ void PackageProxyModel::setBackend(QApt::Backend *backend)
 
 void PackageProxyModel::search(const QString &searchText)
 {
+    m_searchText = searchText;
     // 1-character searches are painfully slow. >= 2 chars are fine, though
     if (searchText.size() > 1) {
         m_searchPackages = m_backend->search(searchText);
@@ -167,8 +168,23 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
             return false;
     }
 
-    if (m_useSearchResults)
-        return m_searchPackages.contains(package);
+    if (m_useSearchResults) {
+        if (m_searchPackages.contains(package)) {
+            return true;
+        }
+
+        // Xapian only indexes packages present in repository metadata. Keep
+        // locally installed packages searchable when their version has no
+        // configured repository entry.
+        if (m_localOnly && package->isLocal()) {
+            const QString query = m_searchText.isEmpty() ? QString() : m_searchText;
+            return QString(package->name()).contains(query, Qt::CaseInsensitive)
+                || package->shortDescription().contains(query, Qt::CaseInsensitive)
+                || package->longDescription().contains(query, Qt::CaseInsensitive);
+        }
+
+        return false;
+    }
 
     return true;
 }

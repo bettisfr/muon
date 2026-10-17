@@ -57,7 +57,7 @@ Install the build dependencies listed in [BUILDING.md](BUILDING.md), then run:
 
 ```sh
 ./scripts/build-deb.sh
-sudo apt install ./build-qt6/muon_5.8.0+qt6.2_amd64.deb
+sudo apt install ./build-qt6/muon_5.8.0+qt6.3_amd64.deb
 ```
 
 The filename above is for amd64; use the generated filename on other architectures.
