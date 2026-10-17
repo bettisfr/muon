@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     KAboutData about("muon", i18n("Muon Package Manager"), version, i18n("A package manager"),
                      KAboutLicense::GPL, i18n("© 2009-2013 Jonathan Thomas"));
     about.addAuthor("Francesco Betti Sorbelli", i18n("Qt6 / KDE Frameworks 6 port"),
-                    QString(), QStringLiteral("https://github.com/bettisfr"));
+                    QStringLiteral("francesco.bettisorbelli@gmail.com"));
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.addCredit(i18n("Harald Sitter"), i18n("Top Gardener"), "sitter@kde.org", QString(), QStringLiteral("apachelogger"));
     about.setProductName("muon/muon");

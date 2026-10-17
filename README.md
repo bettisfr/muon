@@ -89,7 +89,7 @@ the Qt6 port and testing of package transactions are welcome.
 ## Credits and license
 
 **Francesco Betti Sorbelli** — Qt6 / KDE Frameworks 6 port:
-[bettisfr on GitHub](https://github.com/bettisfr).
+[francesco.bettisorbelli@gmail.com](mailto:francesco.bettisorbelli@gmail.com).
 
 This fork builds on the work of the original Muon and QApt authors and KDE
 contributors. Existing copyright and license notices are preserved in the
