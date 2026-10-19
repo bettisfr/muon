@@ -17,7 +17,7 @@ sudo apt install build-essential cmake ninja-build extra-cmake-modules \
 
 ```sh
 ./scripts/build-deb.sh
-sudo apt install ./build-qt6/muon_5.8.0+qt6.3_amd64.deb
+sudo apt install ./build-qt6/muon_5.9.0_amd64.deb
 ```
 
 The package installs Muon in `/usr/bin`, desktop integration in `/usr/share`,

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(muon)
-set(PROJECT_VERSION "5.8.0")
+set(PROJECT_VERSION "5.9.0")
 set(PROJECT_VERSION_MAJOR 5)
 
 find_package(ECM REQUIRED NO_MODULE)

@@ -11,6 +11,9 @@ This is an independent fork, not an official KDE release.
 Muon provides a detailed view of Debian packages, including dependencies,
 available versions, installed files, package history, and pending changes.
 
+Current version: **5.9.0**, based on Muon **5.8.0**.
+The application and Debian package use the same version.
+
 ## What changed in this fork
 
 - Migrated the application from Qt5 / KDE Frameworks 5 to Qt6 / KDE Frameworks 6.
@@ -57,7 +60,7 @@ Install the build dependencies listed in [BUILDING.md](BUILDING.md), then run:
 
 ```sh
 ./scripts/build-deb.sh
-sudo apt install ./build-qt6/muon_5.8.0+qt6.3_amd64.deb
+sudo apt install ./build-qt6/muon_5.9.0_amd64.deb
 ```
 
 The filename above is for amd64; use the generated filename on other architectures.
